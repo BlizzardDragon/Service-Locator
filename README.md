@@ -5,4 +5,6 @@
 * DOTween
 * Cinemachine
 
-![Screen](Assets/Resources.Runner.png)
+Screen:
+
+<img src="Assets/Resources/Runner.png" width="300">
