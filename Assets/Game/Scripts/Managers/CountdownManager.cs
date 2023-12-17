@@ -4,26 +4,25 @@ using DG.Tweening;
 using UnityEngine.UI;
 using System;
 
-public class CountdownText : MonoBehaviour, IGamePrepareListener, IService
+public class CountdownManager : MonoBehaviour, IGamePrepareListener, IService
 {
     [SerializeField] private TextMeshProUGUI _countdownText;
     [SerializeField] private Image _background;
     [SerializeField] private GameObject _pauseButton;
+    [SerializeField] private GameObject _score;
 
     private Color _backgroundStartColor;
     private Color _textStartColor;
 
     private int _countdownValue;
-    private bool _isFirstStart = true;
+
+    public event Action OnTimeIsOver;
 
     private const int TIMER_VALUE = 3;
     private const float FADE_TIME = 1;
     private const float SCALE_TEXT = 1.5f;
     private const int LOOPS = TIMER_VALUE;
     private const int BACKGROUND_FADE_TIME = TIMER_VALUE;
-    
-    public event Action OnGameStarted;
-    public event Action OnGameResumed;
 
 
     public void OnPrepareGame() => PlayCountdown();
@@ -51,7 +50,6 @@ public class CountdownText : MonoBehaviour, IGamePrepareListener, IService
         DOTween.Sequence()
             .SetLink(gameObject)
             .Append(_background.DOFade(0, BACKGROUND_FADE_TIME))
-            .AppendCallback(InvokePlayGame)
             .AppendCallback(ShowGameScreen);
     }
 
@@ -68,18 +66,7 @@ public class CountdownText : MonoBehaviour, IGamePrepareListener, IService
         _countdownText.color = _textStartColor;
         _countdownText.enabled = false;
         _pauseButton.SetActive(true);
-    }
-
-    private void InvokePlayGame()
-    {
-        if (_isFirstStart)
-        {
-            OnGameStarted?.Invoke();
-            _isFirstStart = false;
-        }
-        else
-        {
-            OnGameResumed?.Invoke();
-        }
+        _score.SetActive(true);
+        OnTimeIsOver?.Invoke();
     }
 }

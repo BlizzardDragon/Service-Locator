@@ -14,8 +14,8 @@ public sealed class BootstrapInstaller : MonoBehaviour
     {
         var gameManager = ServiceLocator.GetService<GameManager>();
 
-        ServiceLocator.GetService<CountdownText>().OnGameStarted += gameManager.StartGame;
-        ServiceLocator.GetService<CountdownText>().OnGameResumed += gameManager.ResumeGame;
+        ServiceLocator.GetService<CountdownObserver>().OnGameStarted += gameManager.StartGame;
+        ServiceLocator.GetService<CountdownObserver>().OnGameResumed += gameManager.ResumeGame;
         ServiceLocator.GetService<CollisionDetector>().OnEnemyCollision += gameManager.FinishGame;
     }
 
@@ -23,8 +23,8 @@ public sealed class BootstrapInstaller : MonoBehaviour
     {
         var gameManager = ServiceLocator.GetService<GameManager>();
 
-        ServiceLocator.GetService<CountdownText>().OnGameStarted -= gameManager.StartGame;
-        ServiceLocator.GetService<CountdownText>().OnGameResumed -= gameManager.ResumeGame;
+        ServiceLocator.GetService<CountdownObserver>().OnGameStarted -= gameManager.StartGame;
+        ServiceLocator.GetService<CountdownObserver>().OnGameResumed -= gameManager.ResumeGame;
         ServiceLocator.GetService<CollisionDetector>().OnEnemyCollision -= gameManager.FinishGame;
     }
 
