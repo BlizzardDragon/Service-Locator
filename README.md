@@ -1,10 +1,17 @@
 # Service Locator
+
+### Описание
 Небольшой раннер, демонстрирующий архитектуру, основанную на паттерне "Сервис локатор".
 
-В проекте используются:
-* DOTween
-* Cinemachine
+### DI System
+- Service Locator
 
-Screen:
+### Плагины
+- DOTween
+- Cinemachine
 
+### Управление
+- A, D
+
+### Скриншоты
 <img src="Assets/Resources/Runner.png" width="300">
