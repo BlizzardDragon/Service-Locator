@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour, IGameFinishListener
+public class AudioManager : MonoBehaviour, IService, IGameFinishListener
 {
     [SerializeField] private AudioSource _audioSource;
 

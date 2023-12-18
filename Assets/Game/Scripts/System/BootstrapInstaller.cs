@@ -1,8 +1,13 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(ServiceLocatorInstaller))]
 public sealed class BootstrapInstaller : MonoBehaviour
 {
+    [SerializeField] private GameObject _startButton;
+    [SerializeField] private Transform _startButtonParant;
+
+
     private void Awake()
     {
         InstallServices();
@@ -28,9 +33,18 @@ public sealed class BootstrapInstaller : MonoBehaviour
         ServiceLocator.GetService<CollisionDetector>().OnEnemyCollision -= gameManager.FinishGame;
     }
 
+    private void Start()
+    {
+        ServiceLocator.GetService<StartButtonObserver>().Init(
+            Instantiate(_startButton, _startButtonParant).GetComponent<Button>(),
+            ServiceLocator.GetService<GameManager>(),
+            ServiceLocator.GetService<AudioManager>()
+        );
+    }
+
     private void OnDestroy()
     {
-        ServiceLocator.ClearServices();
+        ServiceLocator.ResetLocalContext();
     }
 
     private void InstallServices() => GetComponent<ServiceLocatorInstaller>().InstallServices();
