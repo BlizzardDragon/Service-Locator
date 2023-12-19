@@ -458,7 +458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _loadingTasks:
   - {fileID: 11400000, guid: cffab650a66c1c84a87596f1d878a904, type: 2}
-  _sceneLoadTask: {fileID: 0}
+  _sceneLoadTask: {fileID: 11400000, guid: a02d8955c0f03d843bee736911810463, type: 2}
 --- !u!4 &2121009642
 Transform:
   m_ObjectHideFlags: 0
