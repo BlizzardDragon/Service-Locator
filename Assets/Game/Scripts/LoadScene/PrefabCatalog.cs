@@ -8,6 +8,23 @@ public sealed class PrefabCatalog : MonoBehaviour, IService
     [SerializeField]
     private PrefabInfo[] _prefabs = Array.Empty<PrefabInfo>();
 
+    public static PrefabCatalog Instance;
+
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        DontDestroyOnLoad(this);
+    }
+
     public async Task LoadAssets()
     {
         var count = _prefabs.Length;
