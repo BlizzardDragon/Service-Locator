@@ -1,14 +1,14 @@
 using System.Threading.Tasks;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "LoadingAssets", menuName = "Configs/Tasks/LoadingAssets", order = 0)]
 public class LoadingAssets : LoadingTask
 {
-    [SerializeField] private PrefabCatalog _catalog;
-
-
     public override async Task<Result> Do()
     {
-        await _catalog.LoadAssets();
+        var catalog = Resources.Load<PrefabCatalog>(nameof(PrefabCatalog));
+        ServiceLocator.AddService(catalog);
+        await catalog.LoadAssets();
 
         return new Result { Success = true };
     }
