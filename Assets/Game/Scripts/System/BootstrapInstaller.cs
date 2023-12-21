@@ -4,10 +4,6 @@ using UnityEngine.UI;
 [RequireComponent(typeof(ServiceLocatorInstaller))]
 public sealed class BootstrapInstaller : MonoBehaviour
 {
-    [SerializeField] private GameObject _startButton;
-    [SerializeField] private Transform _startButtonParant;
-
-
     private void Awake()
     {
         InstallServices();
@@ -35,8 +31,11 @@ public sealed class BootstrapInstaller : MonoBehaviour
 
     private void Start()
     {
+        var prefabFactory = ServiceLocator.GetService<PrefabFactory>();
+        prefabFactory.Init(ServiceLocator.GetService<PrefabCatalog>());
+
         ServiceLocator.GetService<StartButtonObserver>().Init(
-            Instantiate(_startButton, _startButtonParant).GetComponent<Button>(),
+            prefabFactory.CreatePrefab(PrefabName.StartButton).GetComponent<Button>(),
             ServiceLocator.GetService<GameManager>(),
             ServiceLocator.GetService<AudioManager>()
         );

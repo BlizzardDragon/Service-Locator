@@ -8,10 +8,7 @@ public class PrefabFactory : MonoBehaviour, IService
     private PrefabCatalog _catalog;
 
 
-    public void Init(PrefabCatalog catalog)
-    {
-        _catalog = catalog;
-    }
+    public void Init(PrefabCatalog catalog) => _catalog = catalog;
 
     public GameObject CreatePrefab(PrefabName key)
     {
@@ -33,10 +30,11 @@ public class PrefabFactory : MonoBehaviour, IService
 
         return Instantiate(_catalog.GetPrefab(key), targetParent);
     }
-}
 
-struct ParentsInfo
-{
-    public PrefabName Name;
-    public Transform Parent;
+    [Serializable]
+    private struct ParentsInfo
+    {
+        public PrefabName Name;
+        public Transform Parent;
+    }
 }
