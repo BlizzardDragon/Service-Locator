@@ -1,10 +1,7 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.AddressableAssets;
 
 public class SceneLoader : MonoBehaviour
 {
-    public void Restart()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
+    public void Restart() => Addressables.LoadSceneAsync(SaveLoader.GetCurrentScene());
 }
