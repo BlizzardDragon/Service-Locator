@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94221da33d947f744a94b382ad36e506, type: 3}
   m_Name: LoadingScene
   m_EditorClassIdentifier: 
+  _sceneName: Level_1
