@@ -35,7 +35,7 @@ public sealed class BootstrapInstaller : MonoBehaviour
         prefabFactory.Init(ServiceLocator.GetService<PrefabCatalog>());
 
         ServiceLocator.GetService<StartButtonObserver>().Init(
-            prefabFactory.CreatePrefab(PrefabName.StartButton).GetComponent<Button>(),
+            prefabFactory.CreatePrefab<Button>(PrefabName.StartButton),
             ServiceLocator.GetService<GameManager>(),
             ServiceLocator.GetService<AudioManager>()
         );

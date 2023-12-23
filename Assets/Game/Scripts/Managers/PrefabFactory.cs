@@ -31,6 +31,9 @@ public class PrefabFactory : MonoBehaviour, IService
         return Instantiate(_catalog.GetPrefab(key), targetParent);
     }
 
+    public T CreatePrefab<T>(PrefabName key) => CreatePrefab(key).GetComponent<T>();
+
+
     [Serializable]
     private struct ParentsInfo
     {
