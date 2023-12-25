@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Default Local Group
+  m_Name: Levels
   m_EditorClassIdentifier: 
-  m_GroupName: Default Local Group
+  m_GroupName: Levels
   m_Data:
     m_SerializedData: []
-  m_GUID: 23e37df868af2014287693cf54021849
+  m_GUID: 54a093fccaa30994cba781f389130ee7
   m_SerializeEntries:
-  - m_GUID: 8fda2be21b263e545bc36b1fdce76aa5
-    m_Address: Enemy
+  - m_GUID: 99c9720ab356a0642a771bea13969a05
+    m_Address: Level_1
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 74676d5941a410e4dba8f6ebadf77aeb, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: bfa5a40f776c3254aa8aea151af6a16f, type: 2}
-    - {fileID: 11400000, guid: e77d31546b2340b42ac52e5c1c122f9e, type: 2}
+    - {fileID: 11400000, guid: 8984c7e2a94f2734797c642c6836086e, type: 2}
+    - {fileID: 11400000, guid: 6e68bd4ab3b6605478d689f9d75e3518, type: 2}
